@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import './styles.css';
+import NewApp from './App.jsx';
+import './design.css';
 
 
+/* The original form implementation remains below in the repository history; the active page is App.jsx. */
 const Icon = ({name, size=18, strokeWidth=2, fill='none', className}) => {
   const common = {width:size, height:size, viewBox:'0 0 24 24', fill:'none', stroke:'currentColor', strokeWidth, strokeLinecap:'round', strokeLinejoin:'round', 'aria-hidden':'true', className};
   const paths = {
@@ -305,4 +307,4 @@ function App(){
   </>;
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById('root')).render(<NewApp />);
