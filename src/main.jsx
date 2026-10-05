@@ -141,7 +141,7 @@ function App(){
     <header className="nav-wrap">
       <nav className="nav container" aria-label="Primary navigation">
         <button className="brand" onClick={()=>scrollTo('top')} aria-label="VYBE HAUS MEDIA home">
-          <img src="/Vybe HaÜS M E D I A.1.png" alt="VYBE HAUS MEDIA" />
+          <img src="/vybe-haus-logo-light-transparent.png" alt="VYBE HAUS MEDIA" />
         </button>
         <div className={`nav-links ${menuOpen?'open':''}`}>
           <button onClick={()=>scrollTo('about')}>About</button>
@@ -180,7 +180,7 @@ function App(){
                   '--glow-y': `${logoTilt.glowY}%`,
                 }}
               >
-                <img src="/Vybe HaÜS M E D I A.1.png" alt="" />
+                <img src="/vybe-haus-logo-light-transparent.png" alt="" />
               </div>
               <div className="hero-note-text">
                 <span>BRANDS</span>
@@ -234,7 +234,7 @@ function App(){
 
       <section id="network" className="network section-pad">
         <div className="container">
-          <div className="network-intro reveal"><div className="section-kicker">04 / CREATOR NETWORK</div><h2>The right creator is <span>everything.</span></h2><p>We match creators based on niche, audience, content style, engagement and brand fit — so the partnership makes sense on both sides.</p><button className="btn btn-light" onClick={()=>scrollTo('contact')}>Find Creators <Icon name="arrowUpRight" size={18}/></button></div>
+          <div className="network-intro reveal"><div className="section-kicker">04 / CREATOR NETWORK</div><h2>The right creator is <span>everything.</span></h2><p>We match creators based on niche, audience, content style, engagement and brand fit — so the partnership makes sense on both sides.</p><div className="network-stat"><strong>500+</strong><span>creators in our network</span></div><button className="btn btn-light" onClick={()=>scrollTo('contact')}>Find Creators <Icon name="arrowUpRight" size={18}/></button></div>
           <div className="category-grid reveal">
             {categories.map(([name, diagram],i)=><div className={`category c${i}`} key={name}><span>0{i+1}</span><div className={`category-diagram diagram-${diagram}`} aria-hidden="true"><i/><i/><i/></div><strong>{name}</strong><Icon name="arrowUpRight" size={18}/></div>)}
           </div>
@@ -301,7 +301,7 @@ function App(){
       </section>
     </main>
 
-    <footer className="footer"><div className="container footer-top"><div><img className="footer-logo" src="/Vybe HaÜS M E D I A.1.png" alt="VYBE HAUS MEDIA" /><p>Creator-powered marketing for brands that want to be impossible to ignore.</p></div><div className="footer-links"><div><span>NAVIGATE</span><button onClick={()=>scrollTo('about')}>About</button><button onClick={()=>scrollTo('services')}>Services</button><button onClick={()=>scrollTo('network')}>Creators</button><button onClick={()=>scrollTo('contact')}>Contact</button></div><div><span>CONNECT</span><a href="https://www.instagram.com/vybe.hausmedia/" target="_blank" rel="noopener noreferrer"><Icon name="instagram" size={17}/> Instagram</a><a className="footer-email" href="mailto:vybe.haus09@gmail.com"><Icon name="mail" size={17}/> Email</a></div></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} VYBE HAUS MEDIA</span><span>WHERE CREATORS BELONG ✦</span></div></footer>
+    <footer className="footer"><div className="container footer-top"><div><img className="footer-logo" src="/vybe-haus-logo-light-transparent.png" alt="VYBE HAUS MEDIA" /><p>Creator-powered marketing for brands that want to be impossible to ignore.</p></div><div className="footer-links"><div><span>NAVIGATE</span><button onClick={()=>scrollTo('about')}>About</button><button onClick={()=>scrollTo('services')}>Services</button><button onClick={()=>scrollTo('network')}>Creators</button><button onClick={()=>scrollTo('contact')}>Contact</button></div><div><span>CONNECT</span><a href="https://www.instagram.com/vybe.hausmedia/" target="_blank" rel="noopener noreferrer"><Icon name="instagram" size={17}/> Instagram</a><a href="https://www.linkedin.com/company/vybe-haus-media/" target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size={17}/> LinkedIn</a><a className="footer-email" href="mailto:vybe.haus09@gmail.com"><Icon name="mail" size={17}/> Email</a></div></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} VYBE HAUS MEDIA</span><span>WHERE CREATORS BELONG ✦</span></div></footer>
   </>;
 }
 

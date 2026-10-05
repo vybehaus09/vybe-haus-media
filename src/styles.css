@@ -33,3 +33,5 @@
 @keyframes diagramPulse{0%,100%{transform:scale(.94);opacity:.62}50%{transform:scale(1.08);opacity:1}}
 @keyframes diagramOrbit{0%{transform:rotate(0deg)}50%{transform:rotate(9deg) translateY(-4px)}100%{transform:rotate(0deg)}}
 @media (prefers-reduced-motion: reduce){.category-diagram{animation:none}}
+
+.network-stat{display:flex;align-items:baseline;gap:12px;margin:0 0 28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);max-width:520px}.network-stat strong{font-family:'Space Grotesk',sans-serif;font-size:48px;line-height:1;color:var(--lime)}.network-stat span{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}
