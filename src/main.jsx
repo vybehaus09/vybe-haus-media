@@ -16,7 +16,12 @@ const Icon = ({name, size=18, strokeWidth=2, fill='none', className}) => {
     play:<path d="m8 5 11 7-11 7V5Z" fill={fill==='currentColor'?'currentColor':'none'}/>,
     instagram:<><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></>,
     linkedin:<><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V8h4v2a5 5 0 0 1 2-2Z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></>,
+<<<<<<< HEAD
     mail:<><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></>
+=======
+    mail:<><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></>,
+    clapperboard:<><path d="M4 8h16v12H4z"/><path d="m4 8 2-4 16 4-2 4z"/><path d="m9 5 2 4M15 6l2 4M8 13h8M8 17h5"/></>
+>>>>>>> 2081a3a (Initial Vybe Haus website)
   };
   return <svg {...common}>{paths[name]}</svg>;
 };
@@ -30,7 +35,21 @@ const services = [
   { num:'06', title:'Social Content', text:'Creator-led content systems that give your social channels a fresh, platform-native point of view.', tone:'sky' }
 ];
 
+<<<<<<< HEAD
 const categories = ['Beauty','Fashion','Food & Beverage','Fitness','Travel','Tech','Lifestyle','Gaming'];
+=======
+const categories = [
+  ['Beauty', 'beauty'],
+  ['Fashion', 'fashion'],
+  ['Food & Beverage', 'food'],
+  ['Fitness', 'fitness'],
+  ['Travel', 'travel'],
+  ['Tech', 'tech'],
+  ['Lifestyle', 'lifestyle'],
+  ['Gaming', 'gaming'],
+  ['Infotainment', 'infotainment'],
+];
+>>>>>>> 2081a3a (Initial Vybe Haus website)
 const reasons = [
   ['Right Creator Fit','Niche, audience, content style, engagement and brand fit guide every match.'],
   ['Authentic Content','Creative that feels native to the creator and natural to the audience.'],
@@ -45,6 +64,27 @@ function App(){
   const [menuOpen,setMenuOpen] = useState(false);
   const [activeService,setActiveService] = useState(0);
   const [submitted,setSubmitted] = useState(false);
+<<<<<<< HEAD
+=======
+  const [contactType,setContactType] = useState('brand');
+  const [submitting,setSubmitting] = useState(false);
+  const [formError,setFormError] = useState('');
+  const [logoTilt,setLogoTilt] = useState({x:0,y:0,glowX:50,glowY:50});
+
+  const handleLogoMove = e => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    setLogoTilt({
+      x: (0.5 - py) * 18,
+      y: (px - 0.5) * 22,
+      glowX: px * 100,
+      glowY: py * 100,
+    });
+  };
+
+  const resetLogoTilt = () => setLogoTilt({x:0,y:0,glowX:50,glowY:50});
+>>>>>>> 2081a3a (Initial Vybe Haus website)
 
   useEffect(()=>{
     const els = document.querySelectorAll('.reveal');
@@ -57,13 +97,70 @@ function App(){
   },[]);
 
   const scrollTo = id => { document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); setMenuOpen(false); };
+<<<<<<< HEAD
   const submit = e => { e.preventDefault(); setSubmitted(true); };
+=======
+  const submit = async e => {
+    e.preventDefault();
+    setFormError('');
+
+    const form = e.currentTarget;
+    const values = Object.fromEntries(new FormData(form).entries());
+    const data = contactType === 'creator'
+      ? {
+          formType: 'creator',
+          Name: values.creatorName,
+          Instagram: values.instagram,
+          Email: values.creatorEmail,
+          Phone: values.phone,
+          Niche: values.niche,
+          Location: values.location,
+          Followers: values.followers,
+          'Avg Views': values.averageViews,
+          'Insta ID Link': values.instagramLink,
+          'Commercial Rate': values.commercialRate,
+        }
+      : {
+          formType: 'brand',
+          Name: values.brandName,
+          Email: values.brandEmail,
+          Brand: values.brand,
+          Message: values.brandMessage,
+        };
+
+    const endpoint = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
+    if (!endpoint) {
+      setFormError('The submission service is not configured yet.');
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(data),
+      });
+
+      form.reset();
+      setSubmitted(true);
+    } catch (error) {
+      setFormError('We could not send your enquiry. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+>>>>>>> 2081a3a (Initial Vybe Haus website)
 
   return <>
     <header className="nav-wrap">
       <nav className="nav container" aria-label="Primary navigation">
         <button className="brand" onClick={()=>scrollTo('top')} aria-label="VYBE HAUS MEDIA home">
+<<<<<<< HEAD
           <img src="/vybe.png" alt="VYBE HAUS MEDIA" />
+=======
+          <img src="/Vybe HaÜS M E D I A.1.png" alt="VYBE HAUS MEDIA" />
+>>>>>>> 2081a3a (Initial Vybe Haus website)
         </button>
         <div className={`nav-links ${menuOpen?'open':''}`}>
           <button onClick={()=>scrollTo('about')}>About</button>
@@ -89,14 +186,43 @@ function App(){
               <button className="btn btn-dark" onClick={()=>scrollTo('contact')}>Start a Campaign <Icon name="arrowUpRight" size={18}/></button>
               <button className="btn btn-outline" onClick={()=>scrollTo('creators')}>Join as a Creator <Icon name="arrowRight" size={18}/></button>
             </div>
+<<<<<<< HEAD
             <div className="hero-note"><span>01</span><span>BRANDS × CREATORS × CULTURE</span></div>
+=======
+            <div className="hero-note">
+              <div
+                className="brand-mark premium-logo-shell"
+                aria-hidden="true"
+                onMouseMove={handleLogoMove}
+                onMouseLeave={resetLogoTilt}
+                style={{
+                  '--rotate-x': `${logoTilt.x}deg`,
+                  '--rotate-y': `${logoTilt.y}deg`,
+                  '--glow-x': `${logoTilt.glowX}%`,
+                  '--glow-y': `${logoTilt.glowY}%`,
+                }}
+              >
+                <img src="/Vybe HaÜS M E D I A.1.png" alt="" />
+              </div>
+              <div className="hero-note-text">
+                <span>BRANDS</span>
+                <span className="divider">×</span>
+                <span>CREATORS</span>
+                <span className="divider">×</span>
+                <span>CULTURE</span>
+              </div>
+            </div>
+>>>>>>> 2081a3a (Initial Vybe Haus website)
           </div>
           <div className="hero-art reveal">
             <div className="hero-frame">
               <div className="hero-photo photo-a"><div className="photo-label">CREATE<br/><strong>WITH<br/>INTENT.</strong></div></div>
               <div className="hero-card lime-card"><span>VYBE<br/>CHECK</span><Icon name="arrowDownRight" size={28}/></div>
               <div className="hero-card black-card"><Icon name="play" size={19} fill="currentColor"/><span>CONTENT<br/>THAT MOVES</span></div>
+<<<<<<< HEAD
               <div className="scribble">GOOD<br/>VYBES<br/>ONLY</div>
+=======
+>>>>>>> 2081a3a (Initial Vybe Haus website)
             </div>
           </div>
         </div>
@@ -120,9 +246,15 @@ function App(){
           <div className="section-head reveal"><div><div className="section-kicker">03 / WHAT WE DO</div><h2>Built around the <span>vybe.</span></h2></div><p>Flexible creator marketing support, from a single UGC sprint to a full social campaign.</p></div>
           <div className="service-layout">
             <div className="service-list reveal">
+<<<<<<< HEAD
               {services.map((s,i)=><button key={s.num} className={`service-row ${activeService===i?'active':''}`} onClick={()=>setActiveService(i)}><span>{s.num}</span><strong>{s.title}</strong><Icon name="arrowRight" size={19}/></button>)}
             </div>
             <div className={`service-feature ${services[activeService].tone} reveal`}>
+=======
+              {services.map((s,i)=><button key={s.num} className={`service-row ${activeService===i?'active':''}`} onClick={()=>setActiveService(i)}><span>{s.num}</span><strong>{s.title}</strong></button>)}
+            </div>
+            <div key={services[activeService].num} className={`service-feature ${services[activeService].tone} reveal service-feature-switch`}>
+>>>>>>> 2081a3a (Initial Vybe Haus website)
               <div className="feature-top"><span>{services[activeService].num}</span><Icon name="sparkles" size={20}/></div>
               <h3>{services[activeService].title}</h3>
               <p>{services[activeService].text}</p>
@@ -137,7 +269,11 @@ function App(){
         <div className="container">
           <div className="network-intro reveal"><div className="section-kicker">04 / CREATOR NETWORK</div><h2>The right creator is <span>everything.</span></h2><p>We match creators based on niche, audience, content style, engagement and brand fit — so the partnership makes sense on both sides.</p><button className="btn btn-light" onClick={()=>scrollTo('contact')}>Find Creators <Icon name="arrowUpRight" size={18}/></button></div>
           <div className="category-grid reveal">
+<<<<<<< HEAD
             {categories.map((c,i)=><div className={`category c${i}`} key={c}><span>0{i+1}</span><strong>{c}</strong><Icon name="arrowUpRight" size={18}/></div>)}
+=======
+            {categories.map(([name, diagram],i)=><div className={`category c${i}`} key={name}><span>0{i+1}</span><div className={`category-diagram diagram-${diagram}`} aria-hidden="true"><i/><i/><i/></div><strong>{name}</strong><Icon name="arrowUpRight" size={18}/></div>)}
+>>>>>>> 2081a3a (Initial Vybe Haus website)
           </div>
         </div>
       </section>
@@ -170,18 +306,51 @@ function App(){
 
       <section id="contact" className="contact section-pad">
         <div className="container contact-grid">
+<<<<<<< HEAD
           <div className="contact-copy reveal"><div className="section-kicker">09 / LET'S WORK</div><h2>Have a brief?<br/><span>Let's make it a vybe.</span></h2><p>Tell us what you're building, what you need and when you're looking to move. We'll use the details to understand the opportunity and next steps.</p><div className="contact-mark">VH<br/><span>MEDIA</span></div></div>
           <div className="form-card reveal">
             {submitted ? <div className="success"><div className="success-icon"><Icon name="check" size={24}/></div><h3>Thanks — your enquiry is in.</h3><p>We've captured the details. You can edit the form below if you want to add anything else.</p><button className="text-btn" onClick={()=>setSubmitted(false)}>Submit another enquiry <Icon name="arrowRight" size={16}/></button></div> : <form onSubmit={submit}>
               <div className="form-grid"><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" required placeholder="you@brand.com" /></label><label>Brand<input name="brand" placeholder="Brand / company" /></label><label>Website<input name="website" type="url" placeholder="https://" /></label><label>Service Required<select name="service" defaultValue=""><option value="" disabled>Select a service</option>{services.map(s=><option key={s.title}>{s.title}</option>)}</select></label><label>Budget Range<select name="budget" defaultValue=""><option value="" disabled>Select a range</option><option>Under ₹50K</option><option>₹50K – ₹1L</option><option>₹1L – ₹3L</option><option>₹3L+</option><option>Let's discuss</option></select></label><label>Timeline<input name="timeline" placeholder="e.g. October 2026" /></label><label className="full">Campaign Details<textarea name="details" required placeholder="Tell us about the campaign, product, audience or goal..."></textarea></label></div>
               <div className="form-foot"><span>We’ll use your details only to respond to this enquiry.</span><button className="btn btn-dark" type="submit">Send Enquiry <Icon name="arrowUpRight" size={18}/></button></div>
+=======
+          <div className="contact-copy reveal"><div className="section-kicker">09 / LET'S WORK</div><h2>Have a brief?<br/><span>Let's make it a vybe.</span></h2><p>Tell us what you're building, what you need and when you're looking to move. We'll use the details to understand the opportunity and next steps.</p><div className="contact-mark contact-name">VYBE HAUS MEDIA</div></div>
+          <div className="form-card reveal">
+            <div className="contact-switch" role="tablist" aria-label="Contact type">
+              <button type="button" role="tab" aria-selected={contactType==='brand'} className={contactType==='brand'?'active':''} onClick={()=>setContactType('brand')}>For Brands</button>
+              <button type="button" role="tab" aria-selected={contactType==='creator'} className={contactType==='creator'?'active':''} onClick={()=>setContactType('creator')}>For Creators</button>
+            </div>
+            {submitted ? <div className="success"><div className="success-icon"><Icon name="check" size={24}/></div><h3>Thanks — your enquiry is in.</h3><p>We’ll get back to you shortly.</p><button className="text-btn" onClick={()=>setSubmitted(false)}>Submit another enquiry <Icon name="arrowRight" size={16}/></button></div> : <form onSubmit={submit}>
+              {contactType==='brand' ? <div className="form-grid">
+                <label>Name<input name="brandName" required placeholder="Your name" /></label>
+                <label>Email<input name="brandEmail" type="email" required placeholder="you@example.com" /></label>
+                <label>Brand<input name="brand" required placeholder="Brand / company" /></label>
+                <label className="full">Message<textarea name="brandMessage" required placeholder="Tell us about your campaign or project..."></textarea></label>
+              </div> : <div className="form-grid creator-form-grid">
+                <label>Name<input name="creatorName" required placeholder="Your name" /></label>
+                <label>Instagram<input name="instagram" required placeholder="@yourhandle" /></label>
+                <label>Email<input name="creatorEmail" type="email" required placeholder="you@example.com" /></label>
+                <label>Phone<input name="phone" type="tel" required placeholder="Your phone number" /></label>
+                <label>Niche<input name="niche" required placeholder="e.g. Fashion, Beauty, Infotainment" /></label>
+                <label>Location<input name="location" required placeholder="City / country" /></label>
+                <label>Followers<input name="followers" inputMode="numeric" required placeholder="e.g. 50K" /></label>
+                <label>Average Views<input name="averageViews" inputMode="numeric" required placeholder="e.g. 20K" /></label>
+                <label className="full">Instagram ID Link<input name="instagramLink" type="url" required placeholder="https://instagram.com/yourhandle" /></label>
+                <label className="full">Commercial Rate<input name="commercialRate" required placeholder="Your rate and currency" /></label>
+              </div>}
+              {formError && <p className="form-error" role="alert">{formError}</p>}
+              <div className="form-foot"><span>We’ll use your details only to respond to this enquiry.</span><button className="btn btn-dark" type="submit" disabled={submitting}>{submitting ? 'Sending...' : 'Send Enquiry'} {!submitting && <Icon name="arrowUpRight" size={18}/>}</button></div>
+>>>>>>> 2081a3a (Initial Vybe Haus website)
             </form>}
           </div>
         </div>
       </section>
     </main>
 
+<<<<<<< HEAD
     <footer className="footer"><div className="container footer-top"><div><img className="footer-logo" src="/vybe.png" alt="VYBE HAUS MEDIA" /><p>Creator-powered marketing for brands that want to be impossible to ignore.</p></div><div className="footer-links"><div><span>NAVIGATE</span><button onClick={()=>scrollTo('about')}>About</button><button onClick={()=>scrollTo('services')}>Services</button><button onClick={()=>scrollTo('network')}>Creators</button><button onClick={()=>scrollTo('contact')}>Contact</button></div><div><span>CONNECT</span><a href="#contact"><Icon name="instagram" size={17}/> Instagram</a><a href="#contact"><Icon name="linkedin" size={17}/> LinkedIn</a><a href="#contact"><Icon name="mail" size={17}/> Enquiries</a></div></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} VYBE HAUS MEDIA</span><span>WHERE CREATORS BELONG ✦</span></div></footer>
+=======
+    <footer className="footer"><div className="container footer-top"><div><img className="footer-logo" src="/Vybe HaÜS M E D I A.1.png" alt="VYBE HAUS MEDIA" /><p>Creator-powered marketing for brands that want to be impossible to ignore.</p></div><div className="footer-links"><div><span>NAVIGATE</span><button onClick={()=>scrollTo('about')}>About</button><button onClick={()=>scrollTo('services')}>Services</button><button onClick={()=>scrollTo('network')}>Creators</button><button onClick={()=>scrollTo('contact')}>Contact</button></div><div><span>CONNECT</span><a href="https://www.instagram.com/vybe.hausmedia/" target="_blank" rel="noopener noreferrer"><Icon name="instagram" size={17}/> Instagram</a><a className="footer-email" href="mailto:vybe.haus09@gmail.com"><Icon name="mail" size={17}/> Email</a></div></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} VYBE HAUS MEDIA</span><span>WHERE CREATORS BELONG ✦</span></div></footer>
+>>>>>>> 2081a3a (Initial Vybe Haus website)
   </>;
 }
 

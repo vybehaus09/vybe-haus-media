@@ -1,7 +1,11 @@
 {
   "name": "vybe-haus-media",
   "private": true,
+<<<<<<< HEAD
   "version": "1.0.2",
+=======
+  "version": "1.0.1",
+>>>>>>> 2081a3a (Initial Vybe Haus website)
   "type": "module",
   "scripts": {
     "dev": "vite",
