@@ -1,0 +1,10 @@
+* [33m8a83d7d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mwebsite-redesign[m[33m, [m[1;31morigin/website-redesign[m[33m, [m[1;32mbackup-website-redesign[m[33m)[m Update Vybe Haus Media website
+* [33mbcf138c[m Update website with latest design
+* [33m847f951[m[33m ([m[1;31morigin/backup-before-redesign[m[33m, [m[1;32mbackup-github-website[m[33m)[m Update website design
+* [33mfbece00[m Restore React site with database form
+* [33m8f006d1[m Revert "New design"
+* [33mbf9a916[m New design
+* [33m2081a3a[m Initial Vybe Haus website
+* [33mcfa6181[m[33m ([m[1;31morigin/main[m[33m)[m Deploy latest website design
+* [33m252520b[m Fix Vercel build by restoring React Vite plugin
+* [33mcc80343[m[33m ([m[1;32mmain[m[33m, [m[1;32mbackup-local-website[m[33m)[m Update Vybe Haus Media website
